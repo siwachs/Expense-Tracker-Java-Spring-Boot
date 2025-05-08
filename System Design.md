@@ -71,3 +71,7 @@
 ## 📘 Notes
 
 - [Design Notes (Notion)](https://ginger-uranium-8af.notion.site/EP01-Auth-Service-9ff640aee5cb435ebd22be61b5fb1aae)
+
+## Drawing Tool
+
+-[Excalidraw](https://excalidraw.com)
