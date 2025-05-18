@@ -15,10 +15,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class Jwt {
+public class JwtService {
     public final String secret;
 
-    public Jwt(@Value("${jwt.secret}") String secret) {
+    public JwtService(@Value("${jwt.secret}") String secret) {
         this.secret = secret;
     }
 
