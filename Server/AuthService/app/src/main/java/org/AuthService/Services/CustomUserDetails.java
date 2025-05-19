@@ -15,13 +15,13 @@ public class CustomUserDetails extends UserInfo implements UserDetails {
     private final String password;
     Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUserDetails(UserInfo byUsername){
+    public CustomUserDetails(UserInfo byUsername) {
         this.username = byUsername.getUsername();
         this.password = byUsername.getPassword();
 
         List<GrantedAuthority> auths = new ArrayList<>();
 
-        for(UserRole role: byUsername.getRoles()){
+        for (UserRole role : byUsername.getRoles()) {
             auths.add(new SimpleGrantedAuthority(role.getName().toLowerCase()));
         }
 
