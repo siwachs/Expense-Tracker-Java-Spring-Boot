@@ -1,5 +1,7 @@
 package org.AuthService.Services;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.AuthService.entities.UserInfo;
 import org.AuthService.models.UserInfoDto;
 import org.AuthService.repositories.UserRepository;
@@ -8,11 +10,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.UUID;
 
+@Component
+@AllArgsConstructor
+@Data
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
