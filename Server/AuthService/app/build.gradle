@@ -40,6 +40,9 @@ dependencies {
     // Early loading of remote configurations
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
+    // DB connection Driver
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
     // Relational database access with JPA and Spring Data
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 

@@ -1,11 +1,11 @@
 package org.AuthService.controllers;
 
-import org.AuthService.Services.JwtService;
-import org.AuthService.Services.RefreshTokenService;
 import org.AuthService.entities.RefreshToken;
 import org.AuthService.request.AuthRequestDto;
 import org.AuthService.request.RefreshTokenRequestDto;
 import org.AuthService.response.JwtResponseDto;
+import org.AuthService.services.JwtService;
+import org.AuthService.services.RefreshTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

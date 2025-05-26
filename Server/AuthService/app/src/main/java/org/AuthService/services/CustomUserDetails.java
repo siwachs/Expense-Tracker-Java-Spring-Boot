@@ -1,4 +1,4 @@
-package org.AuthService.Services;
+package org.AuthService.services;
 
 import org.AuthService.entities.UserInfo;
 import org.AuthService.entities.UserRole;

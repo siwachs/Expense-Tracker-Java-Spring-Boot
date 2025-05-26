@@ -1,4 +1,4 @@
-package org.AuthService.Services;
+package org.AuthService.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

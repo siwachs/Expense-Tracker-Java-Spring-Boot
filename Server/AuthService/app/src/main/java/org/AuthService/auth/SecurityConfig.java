@@ -1,8 +1,8 @@
 package org.AuthService.auth;
 
 import lombok.Data;
-import org.AuthService.Services.UserDetailsServiceImpl;
 import org.AuthService.repositories.UserRepository;
+import org.AuthService.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
