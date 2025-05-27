@@ -6,6 +6,7 @@ import org.AuthService.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,8 +14,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,20 +38,22 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtAuthFilter jwtAuthFilter) throws Exception {
-        return httpSecurity
-                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF protection (mostly for APIs)
-                .cors(CorsConfigurer::disable) // Disable CORS
+        httpSecurity
+                .csrf(csrf -> csrf
+                        .disable()
+                )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/v1/login", "/auth/v1/refreshToken", "/auth/v1/signup")
-                        .permitAll() // Only allow anonymous (unauthenticated) users to access these endpoints
+                        .requestMatchers(HttpMethod.POST, "/auth/v1/login", "/auth/v1/refreshToken", "/auth/v1/signup")
+                        .permitAll()
                         .anyRequest()
-                        .authenticated() // All other endpoints require authentication
+                        .authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .authenticationProvider(authenticationProvider())
-                .build();
+                .authenticationProvider(authenticationProvider());
+
+        return httpSecurity.build();
     }
 
     @Bean

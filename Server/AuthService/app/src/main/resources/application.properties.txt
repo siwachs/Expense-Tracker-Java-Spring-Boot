@@ -15,5 +15,6 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 server.port=9898
 
 # Logging (Optional Debugging)
+logging.level.org.springframework.security.web.csrf=DEBUG
 logging.level.org.springframework.security=DEBUG
 logging.level.org.AuthService=DEBUG
