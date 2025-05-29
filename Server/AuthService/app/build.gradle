@@ -76,5 +76,5 @@ java {
 }
 
 application {
-    mainClass = 'org.authservice.App'
+    mainClass = 'org.AuthService.App'
 }
